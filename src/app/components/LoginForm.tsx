@@ -1,12 +1,25 @@
 "use client";
 import * as Form from "@radix-ui/react-form";
 import { Button, Heading, TextField } from "@radix-ui/themes";
+import { experimental_useFormStatus as useFormStatus } from "react-dom";
+import { loginAction } from "../actions/login";
 
-export default function LoginForm({
-  action,
-}: {
-  action: (formData: FormData) => void;
-}) {
+function SubmitButton() {
+  const { pending } = useFormStatus();
+
+  return (
+    <Form.Submit
+      aria-disabled={pending}
+      disabled={pending}
+      className={`hover:cursor-pointer ${!pending && "bg-rt-primary"}`}
+      asChild
+    >
+      <Button variant="solid">Log In</Button>
+    </Form.Submit>
+  );
+}
+
+export default function LoginForm({ action }: { action: typeof loginAction }) {
   return (
     <Form.Root
       action={action}
@@ -17,18 +30,16 @@ export default function LoginForm({
       </Heading>
       <Form.Field className="w-full px-6" name="email">
         <Form.Control type="email" asChild>
-          <TextField.Input placeholder="john.doe@restaurant.com" />
+          <TextField.Input required placeholder="john.doe@restaurant.com" />
         </Form.Control>
       </Form.Field>
 
       <Form.Field className="w-full px-6" name="password">
         <Form.Control type="password" asChild>
-          <TextField.Input placeholder="Password" />
+          <TextField.Input required placeholder="Password" />
         </Form.Control>
       </Form.Field>
-      <Form.Submit className="hover:cursor-pointer" asChild>
-        <Button variant="solid">Log In</Button>
-      </Form.Submit>
+      <SubmitButton />
     </Form.Root>
   );
 }

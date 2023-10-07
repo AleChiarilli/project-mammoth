@@ -3,6 +3,5 @@ export default function SenderView({
 }: {
   params: { senderId: string };
 }) {
-  return;
-  <></>;
+  return <>{params.senderId}</>;
 }
