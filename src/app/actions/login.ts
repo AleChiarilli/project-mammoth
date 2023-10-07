@@ -1,5 +1,14 @@
 "use server";
+import { z } from "zod";
 
 export async function loginAction(loginForm: FormData) {
-  // buscar correo y contraseña en postgre y validar inicio de sesion
+  const Login = z.object({
+    email: z.string(),
+    password: z.string(),
+  });
+
+  const loginData = Login.parse({
+    email: loginForm.get("email"),
+    password: loginForm.get("password"),
+  });
 }
