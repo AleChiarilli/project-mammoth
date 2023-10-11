@@ -151,7 +151,6 @@ export default function SenderView({
           </Button>
         </div>
       </div>
-
       <TabsCategories />
     </>
   );
