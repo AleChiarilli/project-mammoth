@@ -13,8 +13,8 @@ export default function SenderView({
   return (
     <>
       {params.senderId}
-      <ScrollArea type="always" size="1" scrollbars="vertical" className="h-80">
-        <Box p="2" pr="8" className="h-80 w-screen">
+      <ScrollArea type="always" size="1" scrollbars="vertical" className="h-56">
+        <Box p="2" pr="8" className="h-56 w-screen">
           <Table.Root>
             <Table.Header>
               <Table.Row>
@@ -142,7 +142,7 @@ export default function SenderView({
           <SelectDemo />
         </div>
 
-        <div className="m-10 flex flex-col gap-5">
+        <div className="m-5 flex flex-col gap-5">
           <Button variant="surface" color="crimson" className="h-16 w-60">
             Borrar orden
           </Button>
