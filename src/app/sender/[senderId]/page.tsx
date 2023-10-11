@@ -1,5 +1,9 @@
 import "@radix-ui/themes/styles.css";
-import { Table, Button, ScrollArea, Box } from "@radix-ui/themes";
+import { Table, Button, ScrollArea, Box, TextField } from "@radix-ui/themes";
+import * as Form from "@radix-ui/react-form";
+import InputPeopleNumber from "../components/inputNumberPeople";
+import SelectDemo from "../components/tableSelector";
+import TabsCategories from "../components/sections";
 
 export default function SenderView({
   params,
@@ -36,10 +40,119 @@ export default function SenderView({
                 <Table.Cell>Nombre del Producto</Table.Cell>
                 <Table.Cell>Descripción del Producto</Table.Cell>
               </Table.Row>
+              <Table.Row>
+                <Table.RowHeaderCell>
+                  <Button size="1" variant="solid" radius="full">
+                    -
+                  </Button>
+                  Unidades
+                  <Button size="1" variant="solid" radius="full">
+                    +
+                  </Button>
+                </Table.RowHeaderCell>
+                <Table.Cell>Nombre del Producto</Table.Cell>
+                <Table.Cell>Descripción del Producto</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.RowHeaderCell>
+                  <Button size="1" variant="solid" radius="full">
+                    -
+                  </Button>
+                  Unidades
+                  <Button size="1" variant="solid" radius="full">
+                    +
+                  </Button>
+                </Table.RowHeaderCell>
+                <Table.Cell>Nombre del Producto</Table.Cell>
+                <Table.Cell>Descripción del Producto</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.RowHeaderCell>
+                  <Button size="1" variant="solid" radius="full">
+                    -
+                  </Button>
+                  Unidades
+                  <Button size="1" variant="solid" radius="full">
+                    +
+                  </Button>
+                </Table.RowHeaderCell>
+                <Table.Cell>Nombre del Producto</Table.Cell>
+                <Table.Cell>Descripción del Producto</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.RowHeaderCell>
+                  <Button size="1" variant="solid" radius="full">
+                    -
+                  </Button>
+                  Unidades
+                  <Button size="1" variant="solid" radius="full">
+                    +
+                  </Button>
+                </Table.RowHeaderCell>
+                <Table.Cell>Nombre del Producto</Table.Cell>
+                <Table.Cell>Descripción del Producto</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.RowHeaderCell>
+                  <Button size="1" variant="solid" radius="full">
+                    -
+                  </Button>
+                  Unidades
+                  <Button size="1" variant="solid" radius="full">
+                    +
+                  </Button>
+                </Table.RowHeaderCell>
+                <Table.Cell>Nombre del Producto</Table.Cell>
+                <Table.Cell>Descripción del Producto</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.RowHeaderCell>
+                  <Button size="1" variant="solid" radius="full">
+                    -
+                  </Button>
+                  Unidades
+                  <Button size="1" variant="solid" radius="full">
+                    +
+                  </Button>
+                </Table.RowHeaderCell>
+                <Table.Cell>Nombre del Producto</Table.Cell>
+                <Table.Cell>Descripción del Producto</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.RowHeaderCell>
+                  <Button size="1" variant="solid" radius="full">
+                    -
+                  </Button>
+                  Unidades
+                  <Button size="1" variant="solid" radius="full">
+                    +
+                  </Button>
+                </Table.RowHeaderCell>
+                <Table.Cell>Nombre del Producto</Table.Cell>
+                <Table.Cell>Descripción del Producto</Table.Cell>
+              </Table.Row>
             </Table.Body>
           </Table.Root>
         </Box>
       </ScrollArea>
+
+      <div className="flex justify-between">
+        <div>
+          <InputPeopleNumber />
+          <SelectDemo />
+        </div>
+
+        <div className="m-10 flex flex-col gap-5">
+          <Button variant="surface" color="crimson" className="h-16 w-60">
+            Borrar orden
+          </Button>
+          <Button variant="surface" color="cyan" className="h-16 w-60">
+            Enviar orden a cocina
+          </Button>
+        </div>
+      </div>
+
+      <TabsCategories />
     </>
   );
 }
