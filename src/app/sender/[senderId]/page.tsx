@@ -1,9 +1,8 @@
 import "@radix-ui/themes/styles.css";
 import { Table, Button, ScrollArea, Box, TextField } from "@radix-ui/themes";
-import * as Form from "@radix-ui/react-form";
 import InputPeopleNumber from "../components/inputNumberPeople";
 import SelectDemo from "../components/tableSelector";
-import TabsCategories from "../components/sections";
+import TabsCategories from "../components/TabsCategories";
 
 export default function SenderView({
   params,
@@ -12,8 +11,12 @@ export default function SenderView({
 }) {
   return (
     <>
-      {params.senderId}
-      <ScrollArea type="always" size="1" scrollbars="vertical" className="h-56">
+      <ScrollArea
+        type="always"
+        size="1"
+        scrollbars="vertical"
+        className="h-2/5"
+      >
         <Box p="2" pr="8" className="h-56 w-screen">
           <Table.Root>
             <Table.Header>
@@ -136,7 +139,7 @@ export default function SenderView({
         </Box>
       </ScrollArea>
 
-      <div className="flex justify-between">
+      <div className="flex justify-between h-1/5">
         <div>
           <InputPeopleNumber />
           <SelectDemo />
