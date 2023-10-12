@@ -16,7 +16,7 @@ export default function TabsCategories() {
         <ScrollArea>
           <Tabs.Content
             value="platillos"
-            className="grid grid-cols-4 justify-items-center gap-4"
+            className="grid grid-cols-4 justify-items-center gap-4 pt-2"
           >
             <Button variant="solid" color="orange" className="h-32 w-32">
               <div className="col flex-col">
@@ -94,7 +94,7 @@ export default function TabsCategories() {
 
           <Tabs.Content
             value="bebidas"
-            className="grid grid-cols-4 justify-items-center gap-4"
+            className="grid grid-cols-4 justify-items-center gap-4 pt-2 "
           >
             <Button variant="solid" color="orange" className="h-32 w-32">
               <div className="col flex-col">
@@ -172,7 +172,7 @@ export default function TabsCategories() {
 
           <Tabs.Content
             value="postres"
-            className="grid grid-cols-4 justify-items-center gap-4 "
+            className="grid grid-cols-4 justify-items-center gap-4 pt-2 "
           >
             <Button variant="solid" color="orange" className="h-32 w-32">
               <div className="col flex-col">
