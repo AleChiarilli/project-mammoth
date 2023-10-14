@@ -43,22 +43,22 @@ model Order {
   totalPrice   Float
   customerName String
   address      String
-  status       OrderStatus
   createdAt    DateTime    @default(now())
   updatedAt    DateTime    @updatedAt
 }
 
 model OrderItem {
-  orderItemId Int      @id
+  orderItemId Int        @id
   orderId     Int
   menuItemId  Int
-  order       Order    @relation(fields: [orderId], references: [id])
-  menuItem    MenuItem @relation(fields: [menuItemId], references: [id])
+  status      ItemStatus
+  order       Order      @relation(fields: [orderId], references: [id])
+  menuItem    MenuItem   @relation(fields: [menuItemId], references: [id])
   quantity    Int
-  subTotal    Float    @default(0) // you can calculate this by menuItem.price * quantity
+  subTotal    Float      @default(0) // you can calculate this by menuItem.price * quantity
 }
 
-enum OrderStatus {
+enum ItemStatus {
   PENDING
   PROCESSED
   DELIVERED
