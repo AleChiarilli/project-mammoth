@@ -8,28 +8,59 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
-model Restaurant {
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String   @unique
-  password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  kitchen   Kitchen? // A restaurant can have only one kitchen
-}
-
 model Kitchen {
-  id           Int        @id @default(autoincrement())
-  name         String
-  capacity     Int
-  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
-  restaurantId Int        @unique // Add a unique constraint to ensure one-to-one relationship
-  senders      Sender[] // A kitchen can have multiple senders
+  id        Int        @id @default(autoincrement())
+  name      String
+  capacity  Int
+  senders   Sender[]
+  menuItems MenuItem[]
 }
 
 model Sender {
   id        Int     @id @default(autoincrement())
   name      String
+  username  String  @unique
+  password  String
   kitchen   Kitchen @relation(fields: [kitchenId], references: [id])
-  kitchenId Int // Reference to the kitchen where the sender works
+  kitchenId Int
+}
+
+model MenuItem {
+  id          Int         @id @default(autoincrement())
+  name        String
+  description String?
+  price       Float
+  image       String? // URL to the image of the menu item
+  category    String? // E.g., "Starter", "Main Course", "Dessert"
+  kitchen     Kitchen     @relation(fields: [kitchenId], references: [id])
+  kitchenId   Int
+  orderItems  OrderItem[]
+}
+
+model Order {
+  id           Int         @id @default(autoincrement())
+  orderItems   OrderItem[]
+  totalPrice   Float
+  customerName String
+  address      String
+  status       OrderStatus
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+}
+
+model OrderItem {
+  orderItemId Int      @id
+  orderId     Int
+  menuItemId  Int
+  order       Order    @relation(fields: [orderId], references: [id])
+  menuItem    MenuItem @relation(fields: [menuItemId], references: [id])
+  quantity    Int
+  subTotal    Float    @default(0) // you can calculate this by menuItem.price * quantity
+}
+
+enum OrderStatus {
+  PENDING
+  PROCESSED
+  DELIVERED
+  CANCELLED
 }
