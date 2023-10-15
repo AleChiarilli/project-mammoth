@@ -7,18 +7,18 @@ const prisma = new PrismaClient();
 
 export async function loginAction(loginForm: FormData) {
   const Login = z.object({
-    email: z.string(),
+    username: z.string(),
     password: z.string(),
   });
 
   const loginData = Login.parse({
-    email: loginForm.get("email"),
+    username: loginForm.get("username"),
     password: loginForm.get("password"),
   });
 
-  const queryResult = await prisma.restaurant.findFirst({
+  const queryResult = await prisma.sender.findFirst({
     where: {
-      email: loginData.email,
+      username: loginData.username,
       password: loginData.password,
     },
   });

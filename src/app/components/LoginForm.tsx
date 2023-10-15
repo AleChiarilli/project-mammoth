@@ -28,9 +28,9 @@ export default function LoginForm({ action }: { action: typeof loginAction }) {
       <Heading as="h1" size="2">
         INICIAR SESIÓN
       </Heading>
-      <Form.Field className="w-full px-6" name="email">
-        <Form.Control type="email" asChild>
-          <TextField.Input required placeholder="john.doe@restaurant.com" />
+      <Form.Field className="w-full px-6" name="username">
+        <Form.Control type="text" asChild>
+          <TextField.Input required placeholder="Username" />
         </Form.Control>
       </Form.Field>
 
