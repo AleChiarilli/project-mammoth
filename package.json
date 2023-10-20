@@ -10,7 +10,10 @@
     "lint": "next lint",
     "prisma:push": "prisma db push",
     "prisma:generate": "prisma generate",
-    "prisma:studio": "prisma studio"
+    "prisma:studio": "prisma studio",
+    "prisma:reset": "prisma migrate reset",
+    "prisma:seed": "prisma db seed",
+    "prisma:pull": "prisma db pull"
   },
   "dependencies": {
     "@prisma/client": "^5.4.1",
@@ -32,8 +35,12 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "cz-conventional-changelog": "^3.3.0",
-    "prisma": "^5.4.1"
+    "prisma": "^5.4.1",
+    "@faker-js/faker": "^8.2.0",
+    "cz-conventional-changelog": "^3.3.0"
+  },
+  "prisma": {
+    "seed": "bun prisma/seed.ts"
   },
   "config": {
     "commitizen": {

@@ -12,8 +12,8 @@ model Kitchen {
   id        Int        @id @default(autoincrement())
   name      String
   capacity  Int
-  senders   Sender[]
   menuItems MenuItem[]
+  senders   Sender[]
 }
 
 model Sender {
@@ -21,8 +21,8 @@ model Sender {
   name      String
   username  String  @unique
   password  String
-  kitchen   Kitchen @relation(fields: [kitchenId], references: [id])
   kitchenId Int
+  kitchen   Kitchen @relation(fields: [kitchenId], references: [id])
 }
 
 model MenuItem {
@@ -30,21 +30,21 @@ model MenuItem {
   name        String
   description String?
   price       Float
-  image       String? // URL to the image of the menu item
-  category    String? // E.g., "Starter", "Main Course", "Dessert"
-  kitchen     Kitchen     @relation(fields: [kitchenId], references: [id])
+  image       String?
+  category    String?
   kitchenId   Int
+  kitchen     Kitchen     @relation(fields: [kitchenId], references: [id])
   orderItems  OrderItem[]
 }
 
 model Order {
   id           Int         @id @default(autoincrement())
-  orderItems   OrderItem[]
   totalPrice   Float
   customerName String
   address      String
   createdAt    DateTime    @default(now())
   updatedAt    DateTime    @updatedAt
+  orderItems   OrderItem[]
 }
 
 model OrderItem {
@@ -52,10 +52,10 @@ model OrderItem {
   orderId     Int
   menuItemId  Int
   status      ItemStatus
-  order       Order      @relation(fields: [orderId], references: [id])
-  menuItem    MenuItem   @relation(fields: [menuItemId], references: [id])
   quantity    Int
-  subTotal    Float      @default(0) // you can calculate this by menuItem.price * quantity
+  subTotal    Float      @default(0)
+  menuItem    MenuItem   @relation(fields: [menuItemId], references: [id])
+  order       Order      @relation(fields: [orderId], references: [id])
 }
 
 enum ItemStatus {

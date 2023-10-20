@@ -13,6 +13,7 @@ services:
       POSTGRES_URL_NON_POOLING: ${POSTGRES_URL_NON_POOLING}
     ports:
       - "5432:5432"
+      - "5555:5555"
     volumes:
       - db_data:/var/lib/postgresql/data
 
