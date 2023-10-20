@@ -1,6 +1,7 @@
 "use client";
-import { Tabs, Box, Text, Button, Grid, ScrollArea } from "@radix-ui/themes";
+import { Tabs, Button, ScrollArea } from "@radix-ui/themes";
 import Image from "next/image";
+import DefaultImage from "../../../../public/item_default.jpg";
 
 export default function TabsCategories() {
   return (
@@ -22,7 +23,7 @@ export default function TabsCategories() {
               <div className="col flex-col">
                 <p>Platillo</p>
                 <Image
-                  src="/public/Foto-platillo.jpg"
+                  src={DefaultImage}
                   width={20}
                   height={20}
                   alt="Picture of the author"
@@ -100,7 +101,7 @@ export default function TabsCategories() {
               <div className="col flex-col">
                 <p>Platillo</p>
                 <Image
-                  src="/public/Foto-platillo.jpg"
+                  src={DefaultImage}
                   width={20}
                   height={20}
                   alt="Picture of the author"
@@ -178,7 +179,7 @@ export default function TabsCategories() {
               <div className="col flex-col">
                 <p>Platillo</p>
                 <Image
-                  src="/public/Foto-platillo.jpg"
+                  src={DefaultImage}
                   width={20}
                   height={20}
                   alt="Picture of the author"
@@ -256,7 +257,7 @@ export default function TabsCategories() {
               <div className="col flex-col">
                 <p>Platillo</p>
                 <Image
-                  src="/public/Foto-platillo.jpg"
+                  src={DefaultImage}
                   width={20}
                   height={20}
                   alt="Picture of the author"
