@@ -31,7 +31,7 @@ model MenuItem {
   description String?
   price       Float
   image       String?
-  category    String?
+  category    String
   kitchenId   Int
   kitchen     Kitchen     @relation(fields: [kitchenId], references: [id])
   orderItems  OrderItem[]

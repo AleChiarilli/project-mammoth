@@ -1,16 +1,20 @@
 import "@radix-ui/themes/styles.css";
-import { Table, Button, ScrollArea, Box, TextField } from "@radix-ui/themes";
+import { Table, Button, ScrollArea, Box } from "@radix-ui/themes";
 import InputPeopleNumber from "../components/inputNumberPeople";
 import SelectDemo from "../components/tableSelector";
-import TabsCategories from "../components/TabsCategories";
+import { getMenuItemsCategories } from "../actions/menuItems";
+import { TabsRoot } from "../components/TabsCategories/client";
 
-export default function SenderView({
+export default async function SenderView({
   params,
+  children,
 }: {
   params: { senderId: string };
+  children: React.ReactNode;
 }) {
+  const categories = await getMenuItemsCategories();
   return (
-    <>
+    <div className="h-screen flex flex-col">
       <ScrollArea
         type="always"
         size="1"
@@ -154,7 +158,9 @@ export default function SenderView({
           </Button>
         </div>
       </div>
-      <TabsCategories />
-    </>
+
+      {/* TODO: Tabs.Content must be within Tabs.Root */}
+      <TabsRoot categories={categories}>{children}</TabsRoot>
+    </div>
   );
 }
