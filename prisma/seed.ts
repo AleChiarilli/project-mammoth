@@ -8,7 +8,7 @@ type FakeMenuItem = Pick<MenuItem, "name" | "price" | "category">;
 const prisma = new PrismaClient();
 const categories = Array(5)
   .fill(0)
-  .map(() => faker.commerce.productAdjective());
+  .map(() => faker.commerce.productAdjective().toLocaleLowerCase());
 
 function createRandomSender(): Pick<Sender, FakeSender> {
   const name = faker.person.firstName();
@@ -30,7 +30,7 @@ function createRandomMenuItems(): FakeMenuItem {
 try {
   const fakeKitchen = await prisma.kitchen.create({
     data: {
-      name: faker.commerce.department(),
+      name: faker.commerce.department().toLocaleLowerCase(),
       capacity: faker.number.int(10),
     },
   });

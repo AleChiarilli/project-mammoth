@@ -23,8 +23,13 @@ export async function loginAction(loginForm: FormData) {
     },
   });
 
+  // TODO: Create a categories table
+  const firstMenuItem = await prisma.menuItem.findFirst({
+    orderBy: { createdAt: "desc" },
+  });
+
   if (queryResult) {
-    return redirect("/sender/1");
+    return redirect(`/sender/${queryResult.id}/${firstMenuItem?.category}`);
   } else {
     return { message: "Invalid Credentials" };
   }

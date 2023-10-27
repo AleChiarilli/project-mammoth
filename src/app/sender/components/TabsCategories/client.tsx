@@ -3,6 +3,7 @@ import { Tabs, Button, ScrollArea } from "@radix-ui/themes";
 import Image from "next/image";
 import DefaultImage from "../../../../../public/item_default.jpg";
 import { getMenuItems, getMenuItemsCategories } from "../../actions/menuItems";
+import Link from "next/link";
 
 export function TabsContent({
   items,
@@ -50,9 +51,11 @@ export function TabsRoot({
     <Tabs.Root className="h-2/5">
       <Tabs.List className="flex justify-between px-20">
         {categories.map(({ category }) => (
-          <Tabs.Trigger key={category} value={category}>
-            {category?.toLocaleUpperCase()}
-          </Tabs.Trigger>
+          <Link key={category} href={`${category}`}>
+            <Tabs.Trigger value={category}>
+              {category?.toLocaleUpperCase()}
+            </Tabs.Trigger>
+          </Link>
         ))}
       </Tabs.List>
       <ScrollArea>{children}</ScrollArea>
