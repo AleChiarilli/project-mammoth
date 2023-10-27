@@ -1,7 +1,7 @@
 "use client";
 import * as Form from "@radix-ui/react-form";
 import { Button, Heading, TextField } from "@radix-ui/themes";
-import { experimental_useFormStatus as useFormStatus } from "react-dom";
+import { useFormStatus } from "react-dom";
 import { loginAction } from "../actions/login";
 
 function SubmitButton() {
