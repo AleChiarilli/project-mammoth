@@ -2,8 +2,12 @@ import "@radix-ui/themes/styles.css";
 import { Table, Button, ScrollArea, Box } from "@radix-ui/themes";
 import InputPeopleNumber from "../components/inputNumberPeople";
 import SelectDemo from "../components/tableSelector";
-import { getMenuItems, getMenuItemsCategories } from "../actions/menuItems";
-import { TabsContent, TabsRoot } from "../components/TabsCategories/client";
+import {
+  getMenuItems,
+  getMenuItemsCategories,
+  getSenderPage,
+} from "../../../actions/menuItems";
+import { MenuItemButton, TabsRoot } from "../components/TabsCategories/client";
 
 export default async function SenderView({
   params,
@@ -12,9 +16,8 @@ export default async function SenderView({
   params: { menu: string[] };
   children: React.ReactNode;
 }) {
-  const [senderId, category] = params.menu;
-  const categories = await getMenuItemsCategories();
-  const items = await getMenuItems(category);
+  const [_, category] = params.menu;
+  const [categories, items] = await getSenderPage(category);
 
   return (
     <div className="h-screen flex flex-col">
@@ -162,8 +165,13 @@ export default async function SenderView({
         </div>
       </div>
 
-      <TabsRoot categories={categories}>
-        <TabsContent items={items} category={category} />
+      <TabsRoot currentCategory={category} categories={categories}>
+        {items.map((menuItem) => (
+          <MenuItemButton
+            key={`${menuItem.id}-${menuItem.name}`}
+            menuItem={menuItem}
+          />
+        ))}
       </TabsRoot>
     </div>
   );

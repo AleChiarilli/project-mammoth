@@ -1,5 +1,5 @@
-import { loginAction } from "./actions/login";
-import LoginForm from "./components/LoginForm";
+import LoginForm from "@/components/LoginForm";
+import { loginAction } from "../actions/login";
 
 export default function Home() {
   return (

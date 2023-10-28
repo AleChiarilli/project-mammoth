@@ -1,8 +1,8 @@
 "use client";
+import { loginAction } from "@/actions/login";
 import * as Form from "@radix-ui/react-form";
 import { Button, Heading, TextField } from "@radix-ui/themes";
 import { useFormStatus } from "react-dom";
-import { loginAction } from "../actions/login";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
