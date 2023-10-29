@@ -15,7 +15,6 @@ function createRandomSender(): Pick<Sender, FakeSender> {
   return {
     name,
     username: faker.internet.displayName({ firstName: name }),
-    password: faker.internet.password(),
   };
 }
 

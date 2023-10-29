@@ -20,7 +20,6 @@ model Sender {
   id        Int     @id @default(autoincrement())
   name      String
   username  String  @unique
-  password  String
   kitchenId Int
   kitchen   Kitchen @relation(fields: [kitchenId], references: [id])
 }
