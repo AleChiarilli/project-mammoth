@@ -1,6 +1,6 @@
 import { getEmployeesList, getFirstMenuItemCategory } from "@/actions/login";
+import { RowCell } from "@/components/RowCell";
 import { Table } from "@radix-ui/themes";
-import Link from "next/link";
 
 export default async function Home() {
   const employees = await getEmployeesList();
@@ -22,13 +22,7 @@ export default async function Home() {
         <Table.Body>
           {employees.map((employee) => (
             <Table.Row key={employee.id}>
-              <Table.RowHeaderCell className="hover:cursor-pointer hover:bg-zinc-100">
-                <Link
-                  href={`/sender/${employee.id}/${firstMenuItem?.category}`}
-                >
-                  {employee.name}
-                </Link>
-              </Table.RowHeaderCell>
+              <RowCell employee={employee} category={firstMenuItem?.category} />
             </Table.Row>
           ))}
         </Table.Body>
