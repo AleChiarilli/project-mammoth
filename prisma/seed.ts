@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client";
 import type { Sender, Kitchen, MenuItem } from "@prisma/client";
 import { faker } from "@faker-js/faker";
 
-type FakeSender = "name" | "username" | "password";
+type FakeSender = "name" | "username";
 type FakeMenuItem = Pick<MenuItem, "name" | "price" | "category">;
 
 const prisma = new PrismaClient();
