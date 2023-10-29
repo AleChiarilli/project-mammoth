@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client";
 import type { Sender, Kitchen, MenuItem } from "@prisma/client";
 import { faker } from "@faker-js/faker";
 
-type FakeSender = "name" | "username";
+type FakeSender = Pick<Sender, "name" | "username">;
 type FakeMenuItem = Pick<MenuItem, "name" | "price" | "category">;
 
 const prisma = new PrismaClient();
@@ -10,7 +10,7 @@ const categories = Array(5)
   .fill(0)
   .map(() => faker.commerce.productAdjective().toLocaleLowerCase());
 
-function createRandomSender(): Pick<Sender, FakeSender> {
+function createRandomSender(): FakeSender {
   const name = faker.person.firstName();
   return {
     name,
